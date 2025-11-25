@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FxBlox Signature Generator</title>
+    <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="header">
+                <h1>FxBlox Signature Generator</h1>
+                <p class="subtitle">Generate your FxBlox identity signature using your Web3 wallet</p>
+            </div>
+
+            <div class="content">
+                <!-- Step 1: Password Input -->
+                <div class="step" id="step1">
+                    <h2>Step 1: Enter Password</h2>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            placeholder="Enter a secure password"
+                            autocomplete="off"
+                        >
+                        <p class="help-text">⚠️ This password will be used to generate your identity. Keep it safe!</p>
+                    </div>
+                    <button id="nextBtn" class="btn btn-primary" disabled>Next: Connect Wallet</button>
+                </div>
+
+                <!-- Step 2: Wallet Connection -->
+                <div class="step hidden" id="step2">
+                    <h2>Step 2: Connect Wallet</h2>
+                    <p class="info-text">Select your Web3 wallet to sign the message:</p>
+                    
+                    <div class="wallet-options">
+                        <button id="metamaskBtn" class="wallet-btn">
+                            <span class="wallet-icon">🦊</span>
+                            <span>MetaMask</span>
+                        </button>
+                        <button id="walletconnectBtn" class="wallet-btn">
+                            <span class="wallet-icon">🔗</span>
+                            <span>WalletConnect</span>
+                        </button>
+                        <button id="coinbaseBtn" class="wallet-btn">
+                            <span class="wallet-icon">💙</span>
+                            <span>Coinbase Wallet</span>
+                        </button>
+                    </div>
+
+                    <div id="connectionStatus" class="status-box hidden">
+                        <p id="statusText"></p>
+                    </div>
+
+                    <button id="backBtn" class="btn btn-secondary">Back</button>
+                </div>
+
+                <!-- Step 3: Signature Display -->
+                <div class="step hidden" id="step3">
+                    <h2>Step 3: Your Signature</h2>
+                    <p class="info-text">Your signature has been generated. Copy it and paste it in the FxBlox app:</p>
+                    
+                    <div class="result-box">
+                        <div class="result-item">
+                            <label>Connected Account:</label>
+                            <div class="result-value" id="accountDisplay"></div>
+                        </div>
+                        <div class="result-item">
+                            <label>Signature:</label>
+                            <div class="result-value" id="signatureDisplay"></div>
+                        </div>
+                    </div>
+
+                    <button id="copyBtn" class="btn btn-primary">📋 Copy Signature</button>
+                    <button id="resetBtn" class="btn btn-secondary">Start Over</button>
+                </div>
+
+                <!-- Error Display -->
+                <div id="errorBox" class="error-box hidden">
+                    <p id="errorText"></p>
+                    <button id="errorCloseBtn" class="btn btn-small">Dismiss</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>🔒 Your password and signature are generated locally. Nothing is stored on our servers.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
