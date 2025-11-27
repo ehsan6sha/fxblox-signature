@@ -11,6 +11,7 @@ const metamaskBtn = document.getElementById('metamaskBtn');
 const walletconnectBtn = document.getElementById('walletconnectBtn');
 const coinbaseBtn = document.getElementById('coinbaseBtn');
 const copyBtn = document.getElementById('copyBtn');
+const copyAccountBtn = document.getElementById('copyAccountBtn');
 const resetBtn = document.getElementById('resetBtn');
 const errorCloseBtn = document.getElementById('errorCloseBtn');
 
@@ -54,6 +55,15 @@ copyBtn.addEventListener('click', () => {
         showNotification('Signature copied to clipboard!');
     }).catch(() => {
         showError('Failed to copy signature');
+    });
+});
+
+copyAccountBtn.addEventListener('click', () => {
+    const account = document.getElementById('accountDisplay').textContent;
+    navigator.clipboard.writeText(account).then(() => {
+        showNotification('Account address copied to clipboard!');
+    }).catch(() => {
+        showError('Failed to copy account address');
     });
 });
 

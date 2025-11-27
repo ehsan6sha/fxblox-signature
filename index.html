@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FxBlox Signature Generator</title>
     <link rel="stylesheet" href="./src/styles.css">
 </head>
+
 <body>
     <div id="app">
         <div class="container">
@@ -19,23 +21,19 @@
                 <div class="step" id="step1">
                     <h2>Step 1: Enter Password</h2>
                     <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            placeholder="Enter a secure password"
-                            autocomplete="off"
-                        >
+                        <label for="password">Same password you entered in Fxblox App:</label>
+                        <input type="password" id="password" placeholder="Enter a secure password" autocomplete="off">
                         <p class="help-text">⚠️ This password will be used to generate your identity. Keep it safe!</p>
                     </div>
-                    <button id="nextBtn" class="btn btn-primary" disabled>Next: Connect Wallet</button>
+                    <button id="nextBtn" class="btn btn-primary" disabled>Next: Connect Same Wallet Address you
+                        Entered in Fxblox App</button>
                 </div>
 
                 <!-- Step 2: Wallet Connection -->
                 <div class="step hidden" id="step2">
                     <h2>Step 2: Connect Wallet</h2>
                     <p class="info-text">Select your Web3 wallet to sign the message:</p>
-                    
+
                     <div class="wallet-options">
                         <button id="metamaskBtn" class="wallet-btn">
                             <span class="wallet-icon">🦊</span>
@@ -62,11 +60,12 @@
                 <div class="step hidden" id="step3">
                     <h2>Step 3: Your Signature</h2>
                     <p class="info-text">Your signature has been generated. Copy it and paste it in the FxBlox app:</p>
-                    
+
                     <div class="result-box">
                         <div class="result-item">
                             <label>Connected Account:</label>
                             <div class="result-value" id="accountDisplay"></div>
+                            <button id="copyAccountBtn" class="btn-icon" title="Copy Address">📋</button>
                         </div>
                         <div class="result-item">
                             <label>Signature:</label>
@@ -93,4 +92,5 @@
 
     <script type="module" src="./src/main.js"></script>
 </body>
+
 </html>
