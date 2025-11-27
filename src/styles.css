@@ -50,7 +50,18 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 40px 30px;
-    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-content>div:first-child {
+    flex: 1;
+    text-align: left;
 }
 
 .header h1 {
@@ -62,6 +73,39 @@ body {
 .subtitle {
     font-size: 14px;
     opacity: 0.9;
+}
+
+.language-selector {
+    flex-shrink: 0;
+}
+
+.language-dropdown {
+    padding: 8px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.language-dropdown:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-dropdown:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+.language-dropdown option {
+    background: var(--bg-white);
+    color: var(--text-dark);
 }
 
 .content {
@@ -82,6 +126,7 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -253,6 +298,7 @@ body {
         opacity: 0;
         transform: translateX(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -346,10 +392,49 @@ body {
     }
 }
 
+/* Copy button icon */
+.btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.btn-icon:active {
+    transform: scale(0.95);
+}
+
 /* Mobile responsiveness */
 @media (max-width: 480px) {
     .header {
         padding: 30px 20px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .header-content>div:first-child {
+        text-align: center;
+        width: 100%;
+    }
+
+    .language-selector {
+        width: 100%;
+    }
+
+    .language-dropdown {
+        width: 100%;
     }
 
     .header h1 {

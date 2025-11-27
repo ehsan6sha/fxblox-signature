@@ -1,7 +1,12 @@
 import { SignatureGenerator } from './signatureGenerator.js';
+import { LanguageManager } from './i18n.js';
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize the language manager
+    const langManager = new LanguageManager();
+    langManager.updateUI();
+
     // Initialize the application
     const app = new SignatureGenerator();
 
@@ -10,12 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('nextBtn');
     const backBtn = document.getElementById('backBtn');
     const metamaskBtn = document.getElementById('metamaskBtn');
-    const walletconnectBtn = document.getElementById('walletconnectBtn');
-    const coinbaseBtn = document.getElementById('coinbaseBtn');
     const copyBtn = document.getElementById('copyBtn');
     const copyAccountBtn = document.getElementById('copyAccountBtn');
     const resetBtn = document.getElementById('resetBtn');
     const errorCloseBtn = document.getElementById('errorCloseBtn');
+    const languageSelector = document.getElementById('languageSelector');
 
     // Step elements
     const step1 = document.getElementById('step1');
@@ -43,30 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
         await app.connectAndSign('metamask');
     });
 
-    walletconnectBtn.addEventListener('click', async () => {
-        await app.connectAndSign('walletconnect');
-    });
-
-    coinbaseBtn.addEventListener('click', async () => {
-        await app.connectAndSign('coinbase');
-    });
-
     copyBtn.addEventListener('click', () => {
         const signature = document.getElementById('signatureDisplay').textContent;
         navigator.clipboard.writeText(signature).then(() => {
-            showNotification('Signature copied to clipboard!');
+            showNotification(langManager.t('signatureCopied'));
         }).catch(() => {
-            showError('Failed to copy signature');
+            showError(langManager.t('failedCopySignature'));
         });
     });
 
     copyAccountBtn.addEventListener('click', () => {
         const account = document.getElementById('accountDisplay').textContent;
         navigator.clipboard.writeText(account).then(() => {
-            showNotification('Account address copied to clipboard!');
+            showNotification(langManager.t('accountCopied'));
         }).catch(() => {
-            showError('Failed to copy account address');
+            showError(langManager.t('failedCopyAccount'));
         });
+    });
+
+    languageSelector.addEventListener('change', (e) => {
+        langManager.setLanguage(e.target.value);
     });
 
     resetBtn.addEventListener('click', () => {
