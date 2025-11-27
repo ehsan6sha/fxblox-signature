@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/fxblox-signature/',
+  base: '/',
   server: {
     port: 5173,
     open: true,
